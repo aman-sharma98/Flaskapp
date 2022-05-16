@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='layout.css') }}" />
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	
+	{% if title %}
+	<title>{{ title }}</title>
+	{% else %}
+	<title>SEIL </title>
+	{% endif %}
+
+	<link rel="icon" href="{{url_for('static', filename='imagescss/SEILlogo.PNG')}}" type="image/icon type">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<script>
+		$(window).scroll(function () {
+		if ($(window).scrollTop() >= 50) {
+		$('.nav-color').css('opacity','0.2');
+		} else {
+		$('.nav-color').css('opacity','0.05');
+		}
+		});
+	</script>
+
+</head>
+<body>
+	<header class="header">
+    <div class="nav-wrap">
+        <div class="nav-color">
+        </div>
+        <div class="nav-items">
+            <a href="{{ url_for('Welcome') }}"><img src="{{ url_for('static', filename='imagescss/SEILlogo.PNG') }}" class="logo"></a>	  
+			<div class="dropdown">
+			
+			{% if title == 'Welcome' %}
+				<a href="{{ url_for('Logout') }}"><button class="dropbtn">Logout</button></a>
+			{% else %}
+				<a href="{{ url_for('Welcome') }}"><button class="dropbtn">Home</button></a>
+				<a href="{{ url_for('Logout') }}"><button class="dropbtn">Logout</button></a>
+			{% endif %}
+			
+		
+			<!--
+			<button class="dropbtn">Profile</button>
+			<button class="dropbtn">Logout</button>
+			
+			<div class="dropdown-content">
+				<a href="#">Profile</a>
+				<a href="#">Logout</a>
+				<a href="#">Link 3</a>
+				<a href="#">Link 4</a>
+			</div>
+			-->
+
+			</div>
+		</div>       
+    </div>
+	</header>
+
+    <div class='wrapper'>
+		<div class='loginbox'>
+		</div>
+		<div class='formcontent'>
+			{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+				{% for category, message in messages %}
+					<div class="alert alert-{{ category }}">
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endif %}
+			{% endwith %}
+			{% block content %}{% endblock %}
+		</div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4" style='text-align: center'>Questionnaire Section 3</legend>
+            <div>
+            <label>
+                <div>
+                    <b>{{ form.q11.label() }}</b>
+                    {% if form.q11.errors %}
+                        {{ form.q11(style="list-style:none") }}
+                        <div style="color:red">
+                            <small>
+                            {% for error in form.q11.errors %}
+                                <span> {{ error }} </span>
+                            {% endfor %}
+                            </small>
+                        </div>
+                        {% else %}
+                            {{ form.q11(style="list-style:none") }}
+                        {% endif %}
+                </div>
+            </label>
+            </div>
+            <div>
+            <label>
+                <div>
+                    <b>{{ form.q12.label() }}</b>
+                    {% if form.q12.errors %}
+                        {{ form.q12(style="list-style:none") }}
+                        <div style="color:red">
+                            <small>
+                            {% for error in form.q12.errors %}
+                                <span> {{ error }} </span>
+                            {% endfor %}
+                            </small>
+                        </div>
+                        {% else %}
+                            {{ form.q12(style="list-style:none") }}
+                        {% endif %}
+                </div>
+            </label>
+            </div>
+            <div>
+                <label>
+                    <div>
+                        <b>{{ form.q13.label() }}</b>
+                        {% if form.q13.errors %}
+                            {{ form.q13(style="list-style:none") }}
+                            <div style="color:red">
+                                <small>
+                                {% for error in form.q13.errors %}
+                                    <span> {{ error }} </span>
+                                {% endfor %}
+                                </small>
+                            </div>
+                            {% else %}
+                                {{ form.q13(style="list-style:none") }}
+                            {% endif %}
+                    </div>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <div>
+                        <b>{{ form.q14.label() }}</b>
+                        {% if form.q14.errors %}
+                            {{ form.q14(style="list-style:none") }}
+                            <div style="color:red">
+                                <small>
+                                {% for error in form.q14.errors %}
+                                    <span> {{ error }} </span>
+                                {% endfor %}
+                                </small>
+                            </div>
+                            {% else %}
+                                {{ form.q14(style="list-style:none") }}
+                            {% endif %}
+                    </div>
+                    <div>
+                        <label>
+                            <div>
+                                <b>{{ form.q15.label() }}</b>
+                                {% if form.q15.errors %}
+                                    {{ form.q15(style="list-style:none") }}
+                                    <div style="color:red">
+                                        <small>
+                                        {% for error in form.q15.errors %}
+                                            <span> {{ error }} </span>
+                                        {% endfor %}
+                                        </small>
+                                    </div>
+                                    {% else %}
+                                        {{ form.q15(style="list-style:none") }}
+                                    {% endif %}
+                            </div>
+                        </label>
+                    </div>
+                </label>
+            </div>
+        </fieldset>
+        <div class="form-group" style='text-align: center'>
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+{% endblock %}

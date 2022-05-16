@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	{% if title == 'Login' %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}" />
+	{% elif title == 'Forgot Password' %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='forgotpasswordpage.css') }}" />
+	{% else %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='loginsignuplayout.css') }}" />
+	{% endif %}
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   
+	<link rel="icon" href="{{url_for('static', filename='imagescss/SEILlogo.PNG')}}" type="image/icon type">
+
+	{% if title %}
+	<title>SEIL - {{ title }}</title>
+	{% else %}
+	<title>SEIL </title>
+	{% endif %}
+
+</head>
+<body>
+
+	<div class='wrapper'>
+		<div class='loginbox'>
+		</div>
+		<div class='formcontent'>
+			{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+				{% for category, message in messages %}
+					<div class="alert alert-{{ category }}">
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endif %}
+			{% endwith %}
+			{% block content %}{% endblock %}
+		</div>
+		<div><img src=" {{url_for('static', filename='imagescss/SEILlogo.PNG')}} " class="avatar"></div>
+	</div>
+</body>
+</html>
